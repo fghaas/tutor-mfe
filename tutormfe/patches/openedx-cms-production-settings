@@ -1,5 +1,5 @@
 {% if MFE_COURSE_AUTHORING_MFE_APP %}
-COURSE_AUTHORING_MICROFRONTEND_URL = "{% if ENABLE_HTTPS %}https://{% else %}http://{% endif %}{{ MFE_HOST }}/{{ MFE_COURSE_AUTHORING_MFE_APP["name"] }}"
+COURSE_AUTHORING_MICROFRONTEND_URL = "{% if ENABLE_HTTPS %}https://{% else %}http://{% endif %}{{ MFE_HOST }}{% if (CADDY_HTTP_PORT|int != 80) %}:{{ CADDY_HTTP_PORT }}{% endif %}/{{ MFE_COURSE_AUTHORING_MFE_APP["name"] }}"
 {% endif %}
 
 LOGIN_REDIRECT_WHITELIST.append("{{ MFE_HOST }}")
